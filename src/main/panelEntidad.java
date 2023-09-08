@@ -1,20 +1,20 @@
 package main;
 
-public class panelProducto extends javax.swing.JPanel {
+public class panelEntidad extends javax.swing.JPanel {
 
     private String dirImagen;
     private String imagen;
-    
-    public panelProducto(String dirImagen, String imagen) {
+
+    public panelEntidad(String dirImagen, String imagen) {
         initComponents();
-        
+
         this.dirImagen = dirImagen;
         this.imagen = imagen;
         this.setImagen(imagen);
     }
-    
-    public void setImagen(String imagen){
-        lblImagen.setSize(120, 120);
+
+    public void setImagen(String imagen) {
+        lblImagen.setSize(140, 140);
         rsscalelabel.RSScaleLabel.setScaleLabel(lblImagen, dirImagen + imagen);
     }
 
@@ -26,11 +26,7 @@ public class panelProducto extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblImagen.setMaximumSize(new java.awt.Dimension(120, 120));
-        lblImagen.setMinimumSize(new java.awt.Dimension(120, 120));
-        lblImagen.setPreferredSize(new java.awt.Dimension(120, 120));
-        add(lblImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 120));
+        add(lblImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 15, 140, 140));
     }// </editor-fold>//GEN-END:initComponents
 
     public String getDirImagen() {
@@ -48,10 +44,8 @@ public class panelProducto extends javax.swing.JPanel {
     public void setLblImagen(javax.swing.JLabel lblImagen) {
         this.lblImagen = lblImagen;
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblImagen;
     // End of variables declaration//GEN-END:variables
-
-
 }

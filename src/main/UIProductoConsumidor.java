@@ -1,19 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package main;
 
-import java.awt.Dimension;
-
 public class UIProductoConsumidor extends javax.swing.JFrame {
-    
+
     public UIProductoConsumidor() {
         initComponents();
-        
-        panelProducto panel = new panelProducto();
-        panel.setImagen("fideos.png");
-        pnlContenedorProductos.add(panel);
+
+        panelProducto panel1 = new panelProducto("src/imagenes/", "cheetos.png");
+        panelProducto panel2 = new panelProducto("src/imagenes/", "galleta.png");
+        panelProducto panel3 = new panelProducto("src/imagenes/", "cheetos.png");
+        panelProducto panel4 = new panelProducto("src/imagenes/", "sushi.png");
+        panelProducto panel5 = new panelProducto("src/imagenes/", "cheetos.png");
+
+        pnlContenedorProductos.add(panel1);
+        pnlContenedorProductos.add(panel2);
+        pnlContenedorProductos.add(panel3);
+        pnlContenedorProductos.add(panel5);
+        pnlContenedorProductos.add(panel4);
+
+        panelEntidad productor1 = new panelEntidad("src/imagenes/", "gato-cocina.gif");
+        panelEntidad productor2 = new panelEntidad("src/imagenes/", "gato-masa.gif");
+        pnlContenedorProductores.add(productor1);
+        pnlContenedorProductores.add(productor2);
+
+        panelEntidad consumidor1 = new panelEntidad("src/imagenes/", "gato-pizza.gif");
+        panelEntidad consumidor2 = new panelEntidad("src/imagenes/", "gato-sushi.gif");
+        pnlContenedorConsumidores.add(consumidor1);
+        pnlContenedorConsumidores.add(consumidor2);
     }
 
     @SuppressWarnings("unchecked")
@@ -21,11 +33,13 @@ public class UIProductoConsumidor extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        scrollContenedorProductores = new javax.swing.JScrollPane();
+        pnlContenedorConsumidores = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
         pnlContenedorProductos = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel8 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        scrollContenedorConsumidores = new javax.swing.JScrollPane();
+        pnlContenedorProductores = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -33,33 +47,44 @@ public class UIProductoConsumidor extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlContenedorProductos.setLayout(new javax.swing.BoxLayout(pnlContenedorProductos, javax.swing.BoxLayout.Y_AXIS));
-        jPanel1.add(pnlContenedorProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 210, 500));
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 260, 500));
-        jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, 260, 240));
+        scrollContenedorProductores.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollContenedorProductores.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        jPanel9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel9.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 240));
+        pnlContenedorConsumidores.setLayout(new javax.swing.BoxLayout(pnlContenedorConsumidores, javax.swing.BoxLayout.Y_AXIS));
+        scrollContenedorProductores.setViewportView(pnlContenedorConsumidores);
 
-        jPanel1.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, 260, 240));
+        jPanel1.add(scrollContenedorProductores, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 190, 330));
+
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        pnlContenedorProductos.setBackground(new java.awt.Color(255, 255, 255));
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout();
+        flowLayout1.setAlignOnBaseline(true);
+        pnlContenedorProductos.setLayout(flowLayout1);
+        jScrollPane2.setViewportView(pnlContenedorProductos);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 740, 150));
+
+        scrollContenedorConsumidores.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollContenedorConsumidores.setToolTipText("");
+        scrollContenedorConsumidores.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        pnlContenedorProductores.setLayout(new javax.swing.BoxLayout(pnlContenedorProductores, javax.swing.BoxLayout.Y_AXIS));
+        scrollContenedorConsumidores.setViewportView(pnlContenedorProductores);
+
+        jPanel1.add(scrollContenedorConsumidores, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 190, 330));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 320, 330));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -73,9 +98,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(UIProductoConsumidor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new UIProductoConsumidor().setVisible(true);
@@ -84,11 +107,13 @@ public class UIProductoConsumidor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPanel pnlContenedorConsumidores;
+    private javax.swing.JPanel pnlContenedorProductores;
     private javax.swing.JPanel pnlContenedorProductos;
+    private javax.swing.JScrollPane scrollContenedorConsumidores;
+    private javax.swing.JScrollPane scrollContenedorProductores;
     // End of variables declaration//GEN-END:variables
 }
