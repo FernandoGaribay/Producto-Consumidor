@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/fernando/Documentos/Java/Producto-Consumidor/src/main/Consumidor.java</file>
+            <file>file:/home/fernando/Documentos/Java/Producto-Consumidor/src/main/UIProductoConsumidor.java</file>
+            <file>file:/home/fernando/Documentos/Java/Producto-Consumidor/src/main/Main.java</file>
+            <file>file:/home/fernando/Documentos/Java/Producto-Consumidor/src/main/Productor.java</file>
+            <file>file:/home/fernando/Documentos/Java/Producto-Consumidor/src/main/panelProducto.java</file>
+            <file>file:/home/fernando/Documentos/Java/Producto-Consumidor/src/main/ImageHandler.java</file>
+        </group>
     </open-files>
 </project-private>

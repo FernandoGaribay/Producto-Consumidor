@@ -10,7 +10,10 @@ public class UIProductoConsumidor extends javax.swing.JFrame {
     
     public UIProductoConsumidor() {
         initComponents();
-
+        
+        panelProducto panel = new panelProducto();
+        panel.setImagen("fideos.png");
+        pnlContenedorProductos.add(panel);
     }
 
     @SuppressWarnings("unchecked")
@@ -18,7 +21,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        pnlContenedorProductos = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
@@ -29,7 +32,9 @@ public class UIProductoConsumidor extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 210, 500));
+
+        pnlContenedorProductos.setLayout(new javax.swing.BoxLayout(pnlContenedorProductos, javax.swing.BoxLayout.Y_AXIS));
+        jPanel1.add(pnlContenedorProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 210, 500));
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 260, 500));
         jPanel1.add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, 260, 240));
 
@@ -81,9 +86,9 @@ public class UIProductoConsumidor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel pnlContenedorProductos;
     // End of variables declaration//GEN-END:variables
 }
