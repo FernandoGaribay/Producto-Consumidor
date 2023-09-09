@@ -17,6 +17,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
     private List<panelEntidad> pnlConsumidores;
     private List<panelEntidad> pnlProductores;
 
+    // <editor-fold defaultstate="collapsed" desc="Constructor e Inicializadores"> 
     public UIProductoConsumidor() {
         initComponents();
         initVariables();
@@ -40,9 +41,17 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
             pnlContenedorProductores.add(pnlProductores.get(i));
         }
     }
-
+    // </editor-fold>
+    
+    // <editor-fold defaultstate="collapsed" desc="Actualizador Buffer UI">
     @Override
     public void bufferActualizado(List<Productos> buffer, List<Consumidor> consumidores, List<Productor> productores) {
+        elementosBuffer(buffer);
+        elementosConsumidores(consumidores);
+        elementosProductores(productores);
+    }
+
+    private void elementosBuffer(List<Productos> buffer) {
         pnlContenedorProductos.removeAll();
 
         for (int i = 0; i < buffer.size(); i++) {
@@ -65,6 +74,11 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
             }
         }
 
+        pnlContenedorProductos.repaint();
+        pnlContenedorProductos.revalidate();
+    }
+
+    private void elementosConsumidores(List<Consumidor> consumidores) {
         for (int i = 0; i < consumidores.size(); i++) {
             int id = i;
             Estados estado = consumidores.get(i).getEstado();
@@ -91,7 +105,9 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
             }
             System.out.println("UI --- CONSUMIDOR: " + id + " ESTADO: " + estado);
         }
+    }
 
+    private void elementosProductores(List<Productor> productores) {
         for (int i = 0; i < productores.size(); i++) {
             int id = i;
             Estados estado = productores.get(i).getEstado();
@@ -106,11 +122,9 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
             }
             System.out.println("UI --- PRODUCTOR: " + id + " ESTADO: " + estado);
         }
-
-        pnlContenedorProductos.repaint();
-        pnlContenedorProductos.revalidate();
     }
-
+    // </editor-fold>
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -241,7 +255,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
 
             pnlContenedorConsumidores.repaint();
             pnlContenedorConsumidores.revalidate();
-            
+
             buffer.disminuirNumConsumidores();
         }
     }//GEN-LAST:event_btnEliminarConsumidor1ActionPerformed
