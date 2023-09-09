@@ -111,23 +111,23 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        background = new javax.swing.JPanel();
         scrollContenedorProductores = new javax.swing.JScrollPane();
         pnlContenedorConsumidores = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
+        scrollContenedorProductos = new javax.swing.JScrollPane();
         pnlContenedorProductos = new javax.swing.JPanel();
         scrollContenedorConsumidores = new javax.swing.JScrollPane();
         pnlContenedorProductores = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        pnlConfiguracion = new javax.swing.JPanel();
+        btnIniciar = new javax.swing.JButton();
+        btnAñadirProductor = new javax.swing.JButton();
+        btnAñadirConsumidor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         scrollContenedorProductores.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollContenedorProductores.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -135,18 +135,18 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         pnlContenedorConsumidores.setLayout(new javax.swing.BoxLayout(pnlContenedorConsumidores, javax.swing.BoxLayout.Y_AXIS));
         scrollContenedorProductores.setViewportView(pnlContenedorConsumidores);
 
-        jPanel1.add(scrollContenedorProductores, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 190, 330));
+        background.add(scrollContenedorProductores, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 190, 330));
 
-        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        scrollContenedorProductos.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scrollContenedorProductos.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         pnlContenedorProductos.setBackground(new java.awt.Color(255, 255, 255));
         java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout();
         flowLayout1.setAlignOnBaseline(true);
         pnlContenedorProductos.setLayout(flowLayout1);
-        jScrollPane2.setViewportView(pnlContenedorProductos);
+        scrollContenedorProductos.setViewportView(pnlContenedorProductos);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 740, 150));
+        background.add(scrollContenedorProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 740, 150));
 
         scrollContenedorConsumidores.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollContenedorConsumidores.setToolTipText("");
@@ -155,49 +155,50 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         pnlContenedorProductores.setLayout(new javax.swing.BoxLayout(pnlContenedorProductores, javax.swing.BoxLayout.Y_AXIS));
         scrollContenedorConsumidores.setViewportView(pnlContenedorProductores);
 
-        jPanel1.add(scrollContenedorConsumidores, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 190, 330));
+        background.add(scrollContenedorConsumidores, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 190, 330));
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlConfiguracion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
-        jButton1.setText("INICIAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnIniciar.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        btnIniciar.setText("INICIAR");
+        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnIniciarActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 280, 50));
+        pnlConfiguracion.add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, 50));
 
-        jButton2.setText("Añadir Productor");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAñadirProductor.setText("Añadir Productor");
+        btnAñadirProductor.setToolTipText("");
+        btnAñadirProductor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAñadirProductorActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, 130, -1));
+        pnlConfiguracion.add(btnAñadirProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 140, 30));
 
-        jButton3.setText("Añadir Consumidor");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnAñadirConsumidor.setText("Añadir Consumidor");
+        btnAñadirConsumidor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnAñadirConsumidorActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
+        pnlConfiguracion.add(btnAñadirConsumidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 140, 30));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 320, 330));
+        background.add(pnlConfiguracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 320, 330));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 520));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 520));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         buffer.iniciar();
-        jButton1.setEnabled(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        btnIniciar.setEnabled(false);
+    }//GEN-LAST:event_btnIniciarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnAñadirConsumidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirConsumidorActionPerformed
         pnlConsumidores.add(new panelEntidad("src/imagenes/", "gato-dormir1.gif"));
         pnlContenedorConsumidores.add(pnlConsumidores.get(pnlConsumidores.size() - 1));
         
@@ -205,9 +206,9 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         pnlContenedorConsumidores.revalidate();
         
         buffer.aumentarNumConsumidores();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnAñadirConsumidorActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnAñadirProductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirProductorActionPerformed
         pnlProductores.add(new panelEntidad("src/imagenes/", "gato-piano.gif"));
         pnlContenedorProductores.add(pnlProductores.get(pnlProductores.size() - 1));
         
@@ -215,7 +216,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         pnlContenedorProductores.revalidate();
         
         buffer.aumentarNumProductores();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnAñadirProductorActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -243,16 +244,16 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JPanel background;
+    private javax.swing.JButton btnAñadirConsumidor;
+    private javax.swing.JButton btnAñadirProductor;
+    private javax.swing.JButton btnIniciar;
+    private javax.swing.JPanel pnlConfiguracion;
     private javax.swing.JPanel pnlContenedorConsumidores;
     private javax.swing.JPanel pnlContenedorProductores;
     private javax.swing.JPanel pnlContenedorProductos;
     private javax.swing.JScrollPane scrollContenedorConsumidores;
     private javax.swing.JScrollPane scrollContenedorProductores;
+    private javax.swing.JScrollPane scrollContenedorProductos;
     // End of variables declaration//GEN-END:variables
 }
