@@ -25,6 +25,7 @@ public class Consumidor extends Thread {
             Productos producto = obtenerProductoSegunEstado();
 
             System.out.println(" - Consumido el producto: " + producto + " del buffer. ID: " + cid + " ESTADO: " + estado);
+            buffer.notificarCambios();
 //            buffer.imprimirBuffer();
             try {
                 sleep(random(5, 3) * 1000);

@@ -30,6 +30,7 @@ public class Productor extends Thread {
             buffer.producir(producto, estado);
 
             System.out.println(" + Producido el producto: " + producto + " del buffer. ID: " + pid + " ESTADO: ");
+            buffer.notificarCambios();
 //            buffer.imprimirBuffer();
             try {
                 sleep(random(5, 3) * 1000);

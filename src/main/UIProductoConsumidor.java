@@ -27,7 +27,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
     public void initVariables() {
         pnlConsumidores = new ArrayList<>();
         pnlProductores = new ArrayList<>();
-        buffer = new Buffer(5, 1, 1);
+        buffer = new Buffer(5, 1, 2);
         buffer.addBufferListener(this);
     }
 
@@ -271,7 +271,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
     }//GEN-LAST:event_btnEliminarConsumidorActionPerformed
 
     private void btnEliminarProductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProductorActionPerformed
-        if (buffer.getNumProductores()> 0) {
+        if (buffer.getNumProductores() > 0) {
             pnlProductores.remove(pnlProductores.size() - 1);
             pnlContenedorProductores.remove(pnlContenedorProductores.getComponents().length - 1);
 

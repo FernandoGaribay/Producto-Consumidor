@@ -74,7 +74,7 @@ public class Buffer {
         listeners.add(listener);
     }
 
-    private void notificarCambios() {
+    public void notificarCambios() {
         for (BufferListener listener : listeners) {
             listener.bufferActualizado(buffer, consumidores, productores);
         }
@@ -85,6 +85,7 @@ public class Buffer {
     public synchronized Estados consumir(Estados estado) {
         while (estaVacio) {
             try {
+//                notificarCambios();
                 wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
@@ -107,7 +108,7 @@ public class Buffer {
     public synchronized void producir(Productos producto, Estados estado) {
         while (estaLLeno) {
             try {
-                notificarCambios();
+//                notificarCambios();
                 wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
@@ -120,8 +121,8 @@ public class Buffer {
             estaLLeno = true;
         }
 
-        notificarCambios();
         notifyAll();
+        notificarCambios();
     }
 
     public synchronized Estados dormirProductor() {
