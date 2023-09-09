@@ -85,7 +85,6 @@ public class Buffer {
     public synchronized Estados consumir(Estados estado) {
         while (estaVacio) {
             try {
-//                notificarCambios();
                 wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
@@ -108,7 +107,6 @@ public class Buffer {
     public synchronized void producir(Productos producto, Estados estado) {
         while (estaLLeno) {
             try {
-//                notificarCambios();
                 wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
