@@ -188,10 +188,10 @@ public class Buffer {
     }
 
     public void disminuirNumProductores() {
-        productores.add(new Productor(numProductores, this));
-        productores.get(productores.size() - 1).start();
+        productores.get(productores.size() - 1).stop();
+        productores.remove(productores.size() - 1);
 
-        this.numProductores++;
+        this.numProductores--;
     }
     // </editor-fold>
 

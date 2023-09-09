@@ -42,7 +42,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         }
     }
     // </editor-fold>
-    
+
     // <editor-fold defaultstate="collapsed" desc="Actualizador Buffer UI">
     @Override
     public void bufferActualizado(List<Productos> buffer, List<Consumidor> consumidores, List<Productor> productores) {
@@ -124,7 +124,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         }
     }
     // </editor-fold>
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -140,7 +140,8 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         btnIniciar = new javax.swing.JButton();
         btnAñadirProductor = new javax.swing.JButton();
         btnAñadirConsumidor = new javax.swing.JButton();
-        btnEliminarConsumidor1 = new javax.swing.JButton();
+        btnEliminarConsumidor = new javax.swing.JButton();
+        btnEliminarProductor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -206,14 +207,23 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         });
         pnlConfiguracion.add(btnAñadirConsumidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 140, 30));
 
-        btnEliminarConsumidor1.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
-        btnEliminarConsumidor1.setText("Eliminar Consumidor");
-        btnEliminarConsumidor1.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarConsumidor.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        btnEliminarConsumidor.setText("Eliminar Consumidor");
+        btnEliminarConsumidor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarConsumidor1ActionPerformed(evt);
+                btnEliminarConsumidorActionPerformed(evt);
             }
         });
-        pnlConfiguracion.add(btnEliminarConsumidor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 125, 140, 30));
+        pnlConfiguracion.add(btnEliminarConsumidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 125, 140, 30));
+
+        btnEliminarProductor.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        btnEliminarProductor.setText("Eliminar Productor");
+        btnEliminarProductor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarProductorActionPerformed(evt);
+            }
+        });
+        pnlConfiguracion.add(btnEliminarProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 125, 140, 30));
 
         background.add(pnlConfiguracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 320, 330));
 
@@ -248,7 +258,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         buffer.aumentarNumProductores();
     }//GEN-LAST:event_btnAñadirProductorActionPerformed
 
-    private void btnEliminarConsumidor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarConsumidor1ActionPerformed
+    private void btnEliminarConsumidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarConsumidorActionPerformed
         if (buffer.getNumConsumidores() > 0) {
             pnlConsumidores.remove(pnlConsumidores.size() - 1);
             pnlContenedorConsumidores.remove(pnlContenedorConsumidores.getComponents().length - 1);
@@ -258,7 +268,19 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
 
             buffer.disminuirNumConsumidores();
         }
-    }//GEN-LAST:event_btnEliminarConsumidor1ActionPerformed
+    }//GEN-LAST:event_btnEliminarConsumidorActionPerformed
+
+    private void btnEliminarProductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProductorActionPerformed
+        if (buffer.getNumProductores()> 0) {
+            pnlProductores.remove(pnlProductores.size() - 1);
+            pnlContenedorProductores.remove(pnlContenedorProductores.getComponents().length - 1);
+
+            pnlContenedorProductores.repaint();
+            pnlContenedorProductores.revalidate();
+
+            buffer.disminuirNumProductores();
+        }
+    }//GEN-LAST:event_btnEliminarProductorActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -289,7 +311,8 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
     private javax.swing.JPanel background;
     private javax.swing.JButton btnAñadirConsumidor;
     private javax.swing.JButton btnAñadirProductor;
-    private javax.swing.JButton btnEliminarConsumidor1;
+    private javax.swing.JButton btnEliminarConsumidor;
+    private javax.swing.JButton btnEliminarProductor;
     private javax.swing.JButton btnIniciar;
     private javax.swing.JPanel pnlConfiguracion;
     private javax.swing.JPanel pnlContenedorConsumidores;

@@ -32,7 +32,7 @@ public class Productor extends Thread {
             System.out.println(" + Producido el producto: " + producto + " del buffer. ID: " + pid + " ESTADO: ");
 //            buffer.imprimirBuffer();
             try {
-                sleep(random(3, 1) * 1000);
+                sleep(random(5, 3) * 1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Productor.class.getName()).log(Level.SEVERE, null, ex);
             }
