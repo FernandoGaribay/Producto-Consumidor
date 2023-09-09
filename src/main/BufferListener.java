@@ -4,5 +4,5 @@ import java.util.List;
 
 public interface BufferListener {
 
-    void bufferActualizado(List<Character> buffer);
+    void bufferActualizado(List<Productos> buffer, List<Consumidor> consumidores);
 }

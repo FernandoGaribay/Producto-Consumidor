@@ -1,42 +1,87 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.List;
+import static main.EstadosConsumidor.DURMIENDO;
+import static main.Productos.GALLETA;
 
 public class UIProductoConsumidor extends javax.swing.JFrame implements BufferListener {
 
     private Buffer buffer;
+    private List<panelEntidad> pnlConsumidores;
 
     public UIProductoConsumidor() {
         initComponents();
-        buffer = new Buffer(10);
-        Productor p1 = new Productor(buffer);
-        Productor p2 = new Productor(buffer);
-        Consumidor c1 = new Consumidor(buffer);
+        initVariables();
+        initEntidades();
+    }
 
-        p1.start();
-        p2.start();
-        c1.start();
+    public void initVariables() {
+        pnlConsumidores = new ArrayList<>();
+        buffer = new Buffer(5, 1, 1);
         buffer.addBufferListener(this); // Registra la instancia actual como oyente
+    }
 
-        panelEntidad productor1 = new panelEntidad("src/imagenes/", "gato-cocina.gif");
-        panelEntidad productor2 = new panelEntidad("src/imagenes/", "gato-masa.gif");
-        pnlContenedorProductores.add(productor1);
-        pnlContenedorProductores.add(productor2);
-
-        panelEntidad consumidor1 = new panelEntidad("src/imagenes/", "gato-pizza.gif");
-        panelEntidad consumidor2 = new panelEntidad("src/imagenes/", "gato-sushi.gif");
-        pnlContenedorConsumidores.add(consumidor1);
-        pnlContenedorConsumidores.add(consumidor2);
+    public void initEntidades() {
+        for (int i = 0; i < buffer.getNumConsumidores(); i++) {
+            pnlConsumidores.add(new panelEntidad("src/imagenes/", "gato-dormir1.gif"));
+            pnlContenedorConsumidores.add(pnlConsumidores.get(i));
+        }
+        pnlContenedorConsumidores.repaint();
+        pnlContenedorConsumidores.revalidate();
     }
 
     @Override
-    public void bufferActualizado(List<Character> buffer) {
+    public void bufferActualizado(List<Productos> buffer, List<Consumidor> consumidores) {
         pnlContenedorProductos.removeAll();
+
         for (int i = 0; i < buffer.size(); i++) {
-            pnlContenedorProductos.add(new panelProducto("src/imagenes/", "cheetos.png"));
+            switch (buffer.get(i)) {
+                case SUSHI:
+                    pnlContenedorProductos.add(new panelProducto("src/imagenes/", "sushi.png"));
+                    break;
+                case CHEETOS:
+                    pnlContenedorProductos.add(new panelProducto("src/imagenes/", "cheetos.png"));
+                    break;
+                case FIDEOS:
+                    pnlContenedorProductos.add(new panelProducto("src/imagenes/", "fideos.png"));
+                    break;
+                case GALLETA:
+                    pnlContenedorProductos.add(new panelProducto("src/imagenes/", "galleta.png"));
+                    break;
+            }
         }
+
+        for (int i = 0; i < consumidores.size(); i++) {
+            int id = i;
+            System.out.println("UI CONSUMIDORES SIZE : " + consumidores.size());
+            EstadosConsumidor estado = consumidores.get(i).getEstado();
+            
+            switch (consumidores.get(i).getEstado()) {
+                case DURMIENDO:
+                    pnlConsumidores.get(i).setImagen("gato-dormir1.gif");
+                    break;
+                case CM_GALLETA:
+                    pnlConsumidores.get(i).setImagen("gato-galleta.gif");
+                    break;
+                case CM_SUSHI:
+                    pnlConsumidores.get(i).setImagen("gato-sushi.gif");
+                    break;
+                case CM_CHEETOS:
+                    pnlConsumidores.get(i).setImagen("gato-cheto.gif");
+                    break;
+                case CM_FIDEOS:
+                    pnlConsumidores.get(i).setImagen("gato-maruchan.gif");
+                    break;
+            }
+
+            System.out.println("UI --- CONSUMIDOR: " + id + " ESTADO: " + estado);
+        }
+
         pnlContenedorProductos.repaint();
         pnlContenedorProductos.revalidate();
+        pnlContenedorConsumidores.repaint();
+        pnlContenedorConsumidores.revalidate();
     }
 
     @SuppressWarnings("unchecked")
@@ -51,6 +96,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         scrollContenedorConsumidores = new javax.swing.JScrollPane();
         pnlContenedorProductores = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -85,6 +131,18 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         scrollContenedorConsumidores.setViewportView(pnlContenedorProductores);
 
         jPanel1.add(scrollContenedorConsumidores, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 190, 330));
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        jButton1.setText("INICIAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 280, 50));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 320, 330));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 520));
@@ -92,6 +150,11 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        buffer.iniciar();
+        jButton1.setEnabled(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -119,6 +182,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
