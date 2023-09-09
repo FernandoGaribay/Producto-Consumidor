@@ -108,14 +108,14 @@ public class Buffer {
         notifyAll();
     }
 
-    public synchronized EstadosConsumidor dormirProductor(){
-        if(estaLLeno){
+    public synchronized EstadosConsumidor dormirProductor() {
+        if (estaLLeno) {
             return EstadosConsumidor.DURMIENDO;
         } else {
             return EstadosConsumidor.COCINANDO_1;
         }
     }
-    
+
     private EstadosConsumidor actualizarEstado(Productos p, EstadosConsumidor estado) {
         EstadosConsumidor nuevoEstado = estado;
 
@@ -153,6 +153,13 @@ public class Buffer {
         for (int i = 0; i < numProductores; i++) {
             productores.get(i).start();
         }
+    }
+
+    public void aumentarNumConsumidores() {
+        consumidores.add(new Consumidor(numConsumidores, this));
+        consumidores.get(consumidores.size() - 1).start();
+
+        this.numConsumidores++;
     }
 
     public int getNumConsumidores() {
