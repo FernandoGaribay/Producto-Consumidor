@@ -1,21 +1,22 @@
 package main;
 
-public class UIProductoConsumidor extends javax.swing.JFrame {
+import java.util.List;
+
+public class UIProductoConsumidor extends javax.swing.JFrame implements BufferListener {
+
+    private Buffer buffer;
 
     public UIProductoConsumidor() {
         initComponents();
+        buffer = new Buffer(10);
+        Productor p1 = new Productor(buffer);
+        Productor p2 = new Productor(buffer);
+        Consumidor c1 = new Consumidor(buffer);
 
-        panelProducto panel1 = new panelProducto("src/imagenes/", "cheetos.png");
-        panelProducto panel2 = new panelProducto("src/imagenes/", "galleta.png");
-        panelProducto panel3 = new panelProducto("src/imagenes/", "cheetos.png");
-        panelProducto panel4 = new panelProducto("src/imagenes/", "sushi.png");
-        panelProducto panel5 = new panelProducto("src/imagenes/", "cheetos.png");
-
-        pnlContenedorProductos.add(panel1);
-        pnlContenedorProductos.add(panel2);
-        pnlContenedorProductos.add(panel3);
-        pnlContenedorProductos.add(panel5);
-        pnlContenedorProductos.add(panel4);
+        p1.start();
+        p2.start();
+        c1.start();
+        buffer.addBufferListener(this); // Registra la instancia actual como oyente
 
         panelEntidad productor1 = new panelEntidad("src/imagenes/", "gato-cocina.gif");
         panelEntidad productor2 = new panelEntidad("src/imagenes/", "gato-masa.gif");
@@ -26,6 +27,16 @@ public class UIProductoConsumidor extends javax.swing.JFrame {
         panelEntidad consumidor2 = new panelEntidad("src/imagenes/", "gato-sushi.gif");
         pnlContenedorConsumidores.add(consumidor1);
         pnlContenedorConsumidores.add(consumidor2);
+    }
+
+    @Override
+    public void bufferActualizado(List<Character> buffer) {
+        pnlContenedorProductos.removeAll();
+        for (int i = 0; i < buffer.size(); i++) {
+            pnlContenedorProductos.add(new panelProducto("src/imagenes/", "cheetos.png"));
+        }
+        pnlContenedorProductos.repaint();
+        pnlContenedorProductos.revalidate();
     }
 
     @SuppressWarnings("unchecked")
@@ -79,6 +90,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 520));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public static void main(String args[]) {

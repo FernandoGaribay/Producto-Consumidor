@@ -21,7 +21,7 @@ public class Productor extends Thread {
             System.out.println("Creado el producto: " + producto + " en el buffer.");
             buffer.imprimirBuffer();
             try {
-                sleep(random(3, 1) * 1000);
+                sleep(random(5, 3) * 1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Productor.class.getName()).log(Level.SEVERE, null, ex);
             }

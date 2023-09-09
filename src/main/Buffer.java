@@ -11,12 +11,24 @@ public class Buffer {
     private int capacidad;
     private boolean estaVacio;
     private boolean estaLLeno;
+    private List<BufferListener> listeners; // Lista de oyentes
 
     public Buffer(int capacidad) {
         this.buffer = new ArrayList<>(capacidad);
         this.capacidad = capacidad;
         this.estaLLeno = false;
         this.estaVacio = true;
+        this.listeners = new ArrayList<>(); // Inicializar la lista de oyentes
+    }
+
+    public synchronized void addBufferListener(BufferListener listener) {
+        listeners.add(listener);
+    }
+
+    private void notificarCambios() {
+        for (BufferListener listener : listeners) {
+            listener.bufferActualizado(buffer);
+        }
     }
 
     public synchronized char consumir() {
@@ -34,7 +46,7 @@ public class Buffer {
             estaVacio = true;
         }
         notifyAll();
-
+        notificarCambios();
         return c;
     }
 
@@ -53,6 +65,7 @@ public class Buffer {
         if (buffer.size() == capacidad) {
             estaLLeno = true;
         }
+        notificarCambios();
         notifyAll();
     }
 
