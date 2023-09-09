@@ -251,6 +251,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    // <editor-fold defaultstate="collapsed" desc="Eventos">
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         buffer.iniciar();
         btnIniciar.setEnabled(false);
@@ -305,7 +306,8 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         
         System.out.println("$ CAPACIDAD MAXIMA DEL BUFFER EN: " + sliderCapacidadBuffer.getValue());
     }//GEN-LAST:event_sliderCapacidadBufferStateChanged
-
+    // </editor-fold>
+    
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
