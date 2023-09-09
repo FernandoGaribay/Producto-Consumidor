@@ -10,8 +10,6 @@ import paneles.panelProducto;
 import paneles.panelEntidad;
 import java.util.ArrayList;
 import java.util.List;
-import static logica.estados.Estados.DURMIENDO;
-import static logica.estados.Productos.GALLETA;
 
 public class UIProductoConsumidor extends javax.swing.JFrame implements BufferListener {
 
@@ -128,6 +126,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         btnIniciar = new javax.swing.JButton();
         btnAñadirProductor = new javax.swing.JButton();
         btnAñadirConsumidor = new javax.swing.JButton();
+        btnEliminarConsumidor1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -174,6 +173,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         });
         pnlConfiguracion.add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, 50));
 
+        btnAñadirProductor.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         btnAñadirProductor.setText("Añadir Productor");
         btnAñadirProductor.setToolTipText("");
         btnAñadirProductor.addActionListener(new java.awt.event.ActionListener() {
@@ -183,6 +183,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         });
         pnlConfiguracion.add(btnAñadirProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 140, 30));
 
+        btnAñadirConsumidor.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         btnAñadirConsumidor.setText("Añadir Consumidor");
         btnAñadirConsumidor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,6 +191,15 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
             }
         });
         pnlConfiguracion.add(btnAñadirConsumidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 140, 30));
+
+        btnEliminarConsumidor1.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
+        btnEliminarConsumidor1.setText("Eliminar Consumidor");
+        btnEliminarConsumidor1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarConsumidor1ActionPerformed(evt);
+            }
+        });
+        pnlConfiguracion.add(btnEliminarConsumidor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 125, 140, 30));
 
         background.add(pnlConfiguracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 320, 330));
 
@@ -224,6 +234,18 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         buffer.aumentarNumProductores();
     }//GEN-LAST:event_btnAñadirProductorActionPerformed
 
+    private void btnEliminarConsumidor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarConsumidor1ActionPerformed
+        if (buffer.getNumConsumidores() > 0) {
+            pnlConsumidores.remove(pnlConsumidores.size() - 1);
+            pnlContenedorConsumidores.remove(pnlContenedorConsumidores.getComponents().length - 1);
+
+            pnlContenedorConsumidores.repaint();
+            pnlContenedorConsumidores.revalidate();
+            
+            buffer.disminuirNumConsumidores();
+        }
+    }//GEN-LAST:event_btnEliminarConsumidor1ActionPerformed
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -253,6 +275,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
     private javax.swing.JPanel background;
     private javax.swing.JButton btnAñadirConsumidor;
     private javax.swing.JButton btnAñadirProductor;
+    private javax.swing.JButton btnEliminarConsumidor1;
     private javax.swing.JButton btnIniciar;
     private javax.swing.JPanel pnlConfiguracion;
     private javax.swing.JPanel pnlContenedorConsumidores;

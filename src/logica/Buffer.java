@@ -174,6 +174,24 @@ public class Buffer {
         this.numProductores++;
     }
 
+    public void disminuirNumConsumidores() {
+        consumidores.get(consumidores.size() - 1).stop();
+        consumidores.remove(consumidores.size() - 1);
+
+        this.numConsumidores--;
+    }
+
+    public void disminuirNumProductores() {
+        productores.add(new Productor(numProductores, this));
+        productores.get(productores.size() - 1).start();
+
+        this.numProductores++;
+    }
+
+    public List<Consumidor> getConsumidores() {
+        return consumidores;
+    }
+
     public int getNumConsumidores() {
         return consumidores.size();
     }
