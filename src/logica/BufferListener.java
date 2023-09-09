@@ -1,6 +1,7 @@
-package main;
+package logica;
 
 import java.util.List;
+import logica.estados.Productos;
 
 public interface BufferListener {
 

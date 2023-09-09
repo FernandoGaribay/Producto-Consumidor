@@ -1,4 +1,4 @@
-package main;
+package logica.estados;
 
 public enum Productos {
     SUSHI,

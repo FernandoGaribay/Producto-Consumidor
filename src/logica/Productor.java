@@ -1,5 +1,8 @@
-package main;
+package logica;
 
+import logica.estados.Productos;
+import logica.estados.Estados;
+import logica.Buffer;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
@@ -8,13 +11,13 @@ import java.util.logging.Logger;
 public class Productor extends Thread {
 
     private int pid;
-    private EstadosConsumidor estado;
+    private Estados estado;
     private Buffer buffer;
     private List<Productos> productos;
 
     public Productor(int pid, Buffer buffer) {
         this.pid = pid;
-        this.estado = EstadosConsumidor.DURMIENDO;
+        this.estado = Estados.DURMIENDO;
         this.buffer = buffer;
         this.productos = Arrays.asList(Productos.values());
     }
@@ -44,11 +47,11 @@ public class Productor extends Thread {
         this.pid = pid;
     }
 
-    public EstadosConsumidor getEstado() {
+    public Estados getEstado() {
         return estado;
     }
 
-    public void setEstado(EstadosConsumidor estado) {
+    public void setEstado(Estados estado) {
         this.estado = estado;
     }
 

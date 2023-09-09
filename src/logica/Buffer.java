@@ -1,9 +1,11 @@
-package main;
+package logica;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import logica.estados.Estados;
+import logica.estados.Productos;
 
 public class Buffer {
 
@@ -66,7 +68,7 @@ public class Buffer {
         }
     }
 
-    public synchronized EstadosConsumidor consumir(EstadosConsumidor estado) {
+    public synchronized Estados consumir(Estados estado) {
         while (estaVacio) {
             try {
                 wait();
@@ -88,7 +90,7 @@ public class Buffer {
         return estado;
     }
 
-    public synchronized void producir(Productos producto, EstadosConsumidor estado) {
+    public synchronized void producir(Productos producto, Estados estado) {
         while (estaLLeno) {
             try {
                 notificarCambios();
@@ -108,29 +110,29 @@ public class Buffer {
         notifyAll();
     }
 
-    public synchronized EstadosConsumidor dormirProductor() {
+    public synchronized Estados dormirProductor() {
         if (estaLLeno) {
-            return EstadosConsumidor.DURMIENDO;
+            return Estados.DURMIENDO;
         } else {
-            return EstadosConsumidor.COCINANDO_1;
+            return Estados.COCINANDO_1;
         }
     }
 
-    private EstadosConsumidor actualizarEstado(Productos p, EstadosConsumidor estado) {
-        EstadosConsumidor nuevoEstado = estado;
+    private Estados actualizarEstado(Productos p, Estados estado) {
+        Estados nuevoEstado = estado;
 
         switch (p) {
             case CHEETOS:
-                nuevoEstado = EstadosConsumidor.CM_CHEETOS;
+                nuevoEstado = Estados.CM_CHEETOS;
                 break;
             case FIDEOS:
-                nuevoEstado = EstadosConsumidor.CM_FIDEOS;
+                nuevoEstado = Estados.CM_FIDEOS;
                 break;
             case GALLETA:
-                nuevoEstado = EstadosConsumidor.CM_GALLETA;
+                nuevoEstado = Estados.CM_GALLETA;
                 break;
             case SUSHI:
-                nuevoEstado = EstadosConsumidor.CM_SUSHI;
+                nuevoEstado = Estados.CM_SUSHI;
                 break;
         }
 

@@ -1,5 +1,9 @@
 package main;
 
+import logica.Productor;
+import logica.Consumidor;
+import logica.Buffer;
+
 public class Main {
 
     public static void main(String[] args) {

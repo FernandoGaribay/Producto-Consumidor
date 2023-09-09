@@ -1,6 +1,6 @@
-package main;
+package logica.estados;
 
-public enum EstadosConsumidor {
+public enum Estados {
     DURMIENDO,
     CM_GALLETA,
     CM_SUSHI,

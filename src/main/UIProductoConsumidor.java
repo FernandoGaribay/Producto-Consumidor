@@ -1,9 +1,17 @@
 package main;
 
+import logica.Productor;
+import logica.estados.Productos;
+import logica.estados.Estados;
+import logica.Consumidor;
+import logica.BufferListener;
+import logica.Buffer;
+import paneles.panelProducto;
+import paneles.panelEntidad;
 import java.util.ArrayList;
 import java.util.List;
-import static main.EstadosConsumidor.DURMIENDO;
-import static main.Productos.GALLETA;
+import static logica.estados.Estados.DURMIENDO;
+import static logica.estados.Productos.GALLETA;
 
 public class UIProductoConsumidor extends javax.swing.JFrame implements BufferListener {
 
@@ -58,7 +66,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
 
         for (int i = 0; i < consumidores.size(); i++) {
             int id = i;
-            EstadosConsumidor estado = consumidores.get(i).getEstado();
+            Estados estado = consumidores.get(i).getEstado();
 
             switch (consumidores.get(i).getEstado()) {
                 case DURMIENDO:
@@ -82,7 +90,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
 
         for (int i = 0; i < productores.size(); i++) {
             int id = i;
-            EstadosConsumidor estado = productores.get(i).getEstado();
+            Estados estado = productores.get(i).getEstado();
 
             switch (productores.get(i).getEstado()) {
                 case DURMIENDO:

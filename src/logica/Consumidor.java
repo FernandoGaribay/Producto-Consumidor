@@ -1,18 +1,21 @@
-package main;
+package logica;
 
+import logica.Buffer;
 import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import logica.estados.Estados;
+import logica.estados.Productos;
 
 public class Consumidor extends Thread {
 
     private int cid;
-    private EstadosConsumidor estado;
+    private Estados estado;
     private Buffer buffer;
 
     public Consumidor(int cid, Buffer buffer) {
         this.cid = cid;
-        this.estado = EstadosConsumidor.DURMIENDO;
+        this.estado = Estados.DURMIENDO;
         this.buffer = buffer;
     }
 
@@ -56,11 +59,11 @@ public class Consumidor extends Thread {
         this.cid = cid;
     }
 
-    public EstadosConsumidor getEstado() {
+    public Estados getEstado() {
         return estado;
     }
 
-    public void setEstado(EstadosConsumidor estado) {
+    public void setEstado(Estados estado) {
         this.estado = estado;
     }
 

@@ -1,4 +1,4 @@
-package main;
+package paneles;
 
 public class panelProducto extends javax.swing.JPanel {
 

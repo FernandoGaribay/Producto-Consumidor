@@ -1,4 +1,4 @@
-package main;
+package paneles;
 
 public class panelEntidad extends javax.swing.JPanel {
 
