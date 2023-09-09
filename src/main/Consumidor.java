@@ -25,7 +25,7 @@ public class Consumidor extends Thread {
             System.out.println(" - Consumido el producto: " + producto + " del buffer. ID: " + cid + " ESTADO: " + estado);
 //            buffer.imprimirBuffer();
             try {
-                sleep(random(7, 3) * 1000);
+                sleep(random(10, 9) * 1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Productor.class.getName()).log(Level.SEVERE, null, ex);
             }

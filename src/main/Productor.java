@@ -23,7 +23,8 @@ public class Productor extends Thread {
     public void run() {
         while (true) {
             Productos producto = productos.get((int) (Math.random() * productos.size()));
-            estado = buffer.producir(producto, estado);
+            estado = buffer.dormirProductor();
+            buffer.producir(producto, estado);
 
             System.out.println(" + Producido el producto: " + producto + " del buffer. ID: " + pid + " ESTADO: ");
 //            buffer.imprimirBuffer();

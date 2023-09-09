@@ -20,7 +20,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
     public void initVariables() {
         pnlConsumidores = new ArrayList<>();
         pnlProductores = new ArrayList<>();
-        buffer = new Buffer(5, 3, 1);
+        buffer = new Buffer(5, 2, 2);
         buffer.addBufferListener(this); // Registra la instancia actual como oyente
     }
 

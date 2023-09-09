@@ -88,17 +88,16 @@ public class Buffer {
         return estado;
     }
 
-    public synchronized EstadosConsumidor producir(Productos producto, EstadosConsumidor estado) {
+    public synchronized void producir(Productos producto, EstadosConsumidor estado) {
         while (estaLLeno) {
             try {
+                notificarCambios();
                 wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
         buffer.add(producto);
-        estado = EstadosConsumidor.COCINANDO_1;
 
         estaVacio = false;
         if (buffer.size() == capacidad) {
@@ -107,9 +106,16 @@ public class Buffer {
 
         notificarCambios();
         notifyAll();
-        return estado;
     }
 
+    public synchronized EstadosConsumidor dormirProductor(){
+        if(estaLLeno){
+            return EstadosConsumidor.DURMIENDO;
+        } else {
+            return EstadosConsumidor.COCINANDO_1;
+        }
+    }
+    
     private EstadosConsumidor actualizarEstado(Productos p, EstadosConsumidor estado) {
         EstadosConsumidor nuevoEstado = estado;
 
