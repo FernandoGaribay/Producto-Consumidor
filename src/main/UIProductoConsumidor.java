@@ -142,6 +142,8 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         btnAñadirConsumidor = new javax.swing.JButton();
         btnEliminarConsumidor = new javax.swing.JButton();
         btnEliminarProductor = new javax.swing.JButton();
+        sliderCapacidadBuffer = new javax.swing.JSlider();
+        lblCapacidadBuffer = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -225,6 +227,22 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         });
         pnlConfiguracion.add(btnEliminarProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 125, 140, 30));
 
+        sliderCapacidadBuffer.setMaximum(10);
+        sliderCapacidadBuffer.setMinimum(2);
+        sliderCapacidadBuffer.setValue(5);
+        sliderCapacidadBuffer.setFocusable(false);
+        sliderCapacidadBuffer.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderCapacidadBufferStateChanged(evt);
+            }
+        });
+        pnlConfiguracion.add(sliderCapacidadBuffer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 300, -1));
+
+        lblCapacidadBuffer.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        lblCapacidadBuffer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCapacidadBuffer.setText("Capacidad Máxima del Buffer");
+        pnlConfiguracion.add(lblCapacidadBuffer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 280, -1));
+
         background.add(pnlConfiguracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 320, 330));
 
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 520));
@@ -282,6 +300,12 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         }
     }//GEN-LAST:event_btnEliminarProductorActionPerformed
 
+    private void sliderCapacidadBufferStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderCapacidadBufferStateChanged
+        buffer.establecerCapacidadBuffer(sliderCapacidadBuffer.getValue());
+        
+        System.out.println("$ CAPACIDAD MAXIMA DEL BUFFER EN: " + sliderCapacidadBuffer.getValue());
+    }//GEN-LAST:event_sliderCapacidadBufferStateChanged
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -314,6 +338,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
     private javax.swing.JButton btnEliminarConsumidor;
     private javax.swing.JButton btnEliminarProductor;
     private javax.swing.JButton btnIniciar;
+    private javax.swing.JLabel lblCapacidadBuffer;
     private javax.swing.JPanel pnlConfiguracion;
     private javax.swing.JPanel pnlContenedorConsumidores;
     private javax.swing.JPanel pnlContenedorProductores;
@@ -321,5 +346,6 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
     private javax.swing.JScrollPane scrollContenedorConsumidores;
     private javax.swing.JScrollPane scrollContenedorProductores;
     private javax.swing.JScrollPane scrollContenedorProductos;
+    private javax.swing.JSlider sliderCapacidadBuffer;
     // End of variables declaration//GEN-END:variables
 }

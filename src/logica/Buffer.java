@@ -164,6 +164,10 @@ public class Buffer {
         }
         System.out.println("");
     }
+    
+    public void establecerCapacidadBuffer(int capacidad){
+        this.capacidad = capacidad;
+    }
 
     public void aumentarNumConsumidores() {
         consumidores.add(new Consumidor(numConsumidores, this));
