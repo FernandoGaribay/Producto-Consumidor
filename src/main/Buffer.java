@@ -162,6 +162,13 @@ public class Buffer {
         this.numConsumidores++;
     }
 
+    public void aumentarNumProductores() {
+        productores.add(new Productor(numProductores, this));
+        productores.get(productores.size() - 1).start();
+
+        this.numProductores++;
+    }
+
     public int getNumConsumidores() {
         return consumidores.size();
     }

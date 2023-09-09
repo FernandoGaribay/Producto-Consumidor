@@ -97,8 +97,6 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
 
         pnlContenedorProductos.repaint();
         pnlContenedorProductos.revalidate();
-        pnlContenedorConsumidores.repaint();
-        pnlContenedorConsumidores.revalidate();
     }
 
     @SuppressWarnings("unchecked")
@@ -194,11 +192,21 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         pnlConsumidores.add(new panelEntidad("src/imagenes/", "gato-dormir1.gif"));
         pnlContenedorConsumidores.add(pnlConsumidores.get(pnlConsumidores.size() - 1));
+        
+        pnlContenedorConsumidores.repaint();
+        pnlContenedorConsumidores.revalidate();
+        
         buffer.aumentarNumConsumidores();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        pnlProductores.add(new panelEntidad("src/imagenes/", "gato-piano.gif"));
+        pnlContenedorProductores.add(pnlProductores.get(pnlProductores.size() - 1));
+        
+        pnlContenedorProductores.repaint();
+        pnlContenedorProductores.revalidate();
+        
+        buffer.aumentarNumProductores();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {
