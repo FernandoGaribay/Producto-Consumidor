@@ -183,6 +183,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
 
         btnIniciar.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         btnIniciar.setText("INICIAR");
+        btnIniciar.setFocusPainted(false);
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIniciarActionPerformed(evt);
@@ -193,6 +194,8 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         btnAñadirProductor.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         btnAñadirProductor.setText("Añadir Productor");
         btnAñadirProductor.setToolTipText("");
+        btnAñadirProductor.setEnabled(false);
+        btnAñadirProductor.setFocusPainted(false);
         btnAñadirProductor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAñadirProductorActionPerformed(evt);
@@ -202,6 +205,8 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
 
         btnAñadirConsumidor.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         btnAñadirConsumidor.setText("Añadir Consumidor");
+        btnAñadirConsumidor.setEnabled(false);
+        btnAñadirConsumidor.setFocusPainted(false);
         btnAñadirConsumidor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAñadirConsumidorActionPerformed(evt);
@@ -211,6 +216,8 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
 
         btnEliminarConsumidor.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         btnEliminarConsumidor.setText("Eliminar Consumidor");
+        btnEliminarConsumidor.setEnabled(false);
+        btnEliminarConsumidor.setFocusPainted(false);
         btnEliminarConsumidor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarConsumidorActionPerformed(evt);
@@ -220,6 +227,8 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
 
         btnEliminarProductor.setFont(new java.awt.Font("Century Gothic", 0, 11)); // NOI18N
         btnEliminarProductor.setText("Eliminar Productor");
+        btnEliminarProductor.setEnabled(false);
+        btnEliminarProductor.setFocusPainted(false);
         btnEliminarProductor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarProductorActionPerformed(evt);
@@ -230,6 +239,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         sliderCapacidadBuffer.setMaximum(10);
         sliderCapacidadBuffer.setMinimum(2);
         sliderCapacidadBuffer.setValue(5);
+        sliderCapacidadBuffer.setEnabled(false);
         sliderCapacidadBuffer.setFocusable(false);
         sliderCapacidadBuffer.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -255,6 +265,12 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         buffer.iniciar();
         btnIniciar.setEnabled(false);
+        
+        btnAñadirConsumidor.setEnabled(true);
+        btnAñadirProductor.setEnabled(true);
+        btnEliminarConsumidor.setEnabled(true);
+        btnEliminarProductor.setEnabled(true);
+        sliderCapacidadBuffer.setEnabled(true);
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void btnAñadirConsumidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirConsumidorActionPerformed
@@ -303,11 +319,11 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
 
     private void sliderCapacidadBufferStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderCapacidadBufferStateChanged
         buffer.establecerCapacidadBuffer(sliderCapacidadBuffer.getValue());
-        
+
         System.out.println("$ CAPACIDAD MAXIMA DEL BUFFER EN: " + sliderCapacidadBuffer.getValue());
     }//GEN-LAST:event_sliderCapacidadBufferStateChanged
     // </editor-fold>
-    
+
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
