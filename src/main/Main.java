@@ -4,8 +4,8 @@ public class Main {
 
     public static void main(String[] args) {
         Buffer b = new Buffer(5, 1, 2);
-        Productor p1 = new Productor(b, 0);
-        Productor p2 = new Productor(b, 1);
+        Productor p1 = new Productor(0, b);
+        Productor p2 = new Productor(0, b);
         Consumidor c1 = new Consumidor(0, b);
 
         p1.start();

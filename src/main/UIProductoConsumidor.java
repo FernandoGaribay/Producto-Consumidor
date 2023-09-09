@@ -9,6 +9,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
 
     private Buffer buffer;
     private List<panelEntidad> pnlConsumidores;
+    private List<panelEntidad> pnlProductores;
 
     public UIProductoConsumidor() {
         initComponents();
@@ -18,7 +19,8 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
 
     public void initVariables() {
         pnlConsumidores = new ArrayList<>();
-        buffer = new Buffer(5, 1, 1);
+        pnlProductores = new ArrayList<>();
+        buffer = new Buffer(5, 3, 1);
         buffer.addBufferListener(this); // Registra la instancia actual como oyente
     }
 
@@ -27,12 +29,14 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
             pnlConsumidores.add(new panelEntidad("src/imagenes/", "gato-dormir1.gif"));
             pnlContenedorConsumidores.add(pnlConsumidores.get(i));
         }
-        pnlContenedorConsumidores.repaint();
-        pnlContenedorConsumidores.revalidate();
+        for (int i = 0; i < buffer.getNumProductores(); i++) {
+            pnlProductores.add(new panelEntidad("src/imagenes/", "gato-piano.gif"));
+            pnlContenedorProductores.add(pnlProductores.get(i));
+        }
     }
 
     @Override
-    public void bufferActualizado(List<Productos> buffer, List<Consumidor> consumidores) {
+    public void bufferActualizado(List<Productos> buffer, List<Consumidor> consumidores, List<Productor> productores) {
         pnlContenedorProductos.removeAll();
 
         for (int i = 0; i < buffer.size(); i++) {
@@ -54,9 +58,8 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
 
         for (int i = 0; i < consumidores.size(); i++) {
             int id = i;
-            System.out.println("UI CONSUMIDORES SIZE : " + consumidores.size());
             EstadosConsumidor estado = consumidores.get(i).getEstado();
-            
+
             switch (consumidores.get(i).getEstado()) {
                 case DURMIENDO:
                     pnlConsumidores.get(i).setImagen("gato-dormir1.gif");
@@ -74,8 +77,22 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
                     pnlConsumidores.get(i).setImagen("gato-maruchan.gif");
                     break;
             }
-
             System.out.println("UI --- CONSUMIDOR: " + id + " ESTADO: " + estado);
+        }
+
+        for (int i = 0; i < productores.size(); i++) {
+            int id = i;
+            EstadosConsumidor estado = productores.get(i).getEstado();
+
+            switch (productores.get(i).getEstado()) {
+                case DURMIENDO:
+                    pnlProductores.get(i).setImagen("gato-piano.gif");
+                    break;
+                case COCINANDO_1:
+                    pnlProductores.get(i).setImagen("gato-masa.gif");
+                    break;
+            }
+            System.out.println("UI --- PRODUCTOR: " + id + " ESTADO: " + estado);
         }
 
         pnlContenedorProductos.repaint();

@@ -48,7 +48,7 @@ public class Buffer {
     private void initProductores(int numProductores) {
         System.out.println("NUMERO DE PRODUCTORES : " + numProductores);
         for (int i = 0; i < numProductores; i++) {
-            productores.add(new Productor(this, i));
+            productores.add(new Productor(i, this));
         }
 
         for (Productor productor : productores) {
@@ -62,7 +62,7 @@ public class Buffer {
 
     private void notificarCambios() {
         for (BufferListener listener : listeners) {
-            listener.bufferActualizado(buffer, consumidores);
+            listener.bufferActualizado(buffer, consumidores, productores);
         }
     }
 
@@ -88,10 +88,9 @@ public class Buffer {
         return estado;
     }
 
-    public synchronized void producir(Productos producto, int id) {
+    public synchronized EstadosConsumidor producir(Productos producto, EstadosConsumidor estado) {
         while (estaLLeno) {
             try {
-//                System.out.println("Me fui a dormir alv");
                 wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
@@ -99,6 +98,7 @@ public class Buffer {
         }
 
         buffer.add(producto);
+        estado = EstadosConsumidor.COCINANDO_1;
 
         estaVacio = false;
         if (buffer.size() == capacidad) {
@@ -107,6 +107,7 @@ public class Buffer {
 
         notificarCambios();
         notifyAll();
+        return estado;
     }
 
     private EstadosConsumidor actualizarEstado(Productos p, EstadosConsumidor estado) {

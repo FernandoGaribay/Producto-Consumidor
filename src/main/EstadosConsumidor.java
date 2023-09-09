@@ -5,6 +5,8 @@ public enum EstadosConsumidor {
     CM_GALLETA,
     CM_SUSHI,
     CM_CHEETOS,
-    CM_FIDEOS
+    CM_FIDEOS,
+    COCINANDO_1,
+    ESPERANDO
     
 }
