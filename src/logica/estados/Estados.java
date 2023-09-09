@@ -6,6 +6,7 @@ public enum Estados {
     CM_SUSHI,
     CM_CHEETOS,
     CM_FIDEOS,
+    CM_PIZZA,
     COCINANDO_1,
     ESPERANDO
     

@@ -28,7 +28,7 @@ public class Consumidor extends Thread {
             System.out.println(" - Consumido el producto: " + producto + " del buffer. ID: " + cid + " ESTADO: " + estado);
 //            buffer.imprimirBuffer();
             try {
-                sleep(random(10, 9) * 1000);
+                sleep(random(5, 3) * 1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Productor.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -45,6 +45,8 @@ public class Consumidor extends Thread {
                 return Productos.GALLETA;
             case CM_SUSHI:
                 return Productos.SUSHI;
+            case CM_PIZZA:
+                return Productos.PIZZA;
             default:
                 // En caso de un estado no reconocido, puedes devolver un valor por defecto o manejarlo de acuerdo a tus necesidades.
                 return null;

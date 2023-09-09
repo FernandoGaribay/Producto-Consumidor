@@ -29,7 +29,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         pnlConsumidores = new ArrayList<>();
         pnlProductores = new ArrayList<>();
         buffer = new Buffer(5, 1, 1);
-        buffer.addBufferListener(this); // Registra la instancia actual como oyente
+        buffer.addBufferListener(this);
     }
 
     public void initEntidades() {
@@ -61,6 +61,9 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
                 case GALLETA:
                     pnlContenedorProductos.add(new panelProducto("src/imagenes/", "galleta.png"));
                     break;
+                case PIZZA:
+                    pnlContenedorProductos.add(new panelProducto("src/imagenes/", "pizza.png"));
+                    break;
             }
         }
 
@@ -83,6 +86,9 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
                     break;
                 case CM_FIDEOS:
                     pnlConsumidores.get(i).setImagen("gato-maruchan.gif");
+                    break;
+                case CM_PIZZA:
+                    pnlConsumidores.get(i).setImagen("gato-pizza.gif");
                     break;
             }
             System.out.println("UI --- CONSUMIDOR: " + id + " ESTADO: " + estado);
@@ -201,20 +207,20 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
     private void btnAñadirConsumidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirConsumidorActionPerformed
         pnlConsumidores.add(new panelEntidad("src/imagenes/", "gato-dormir1.gif"));
         pnlContenedorConsumidores.add(pnlConsumidores.get(pnlConsumidores.size() - 1));
-        
+
         pnlContenedorConsumidores.repaint();
         pnlContenedorConsumidores.revalidate();
-        
+
         buffer.aumentarNumConsumidores();
     }//GEN-LAST:event_btnAñadirConsumidorActionPerformed
 
     private void btnAñadirProductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirProductorActionPerformed
         pnlProductores.add(new panelEntidad("src/imagenes/", "gato-piano.gif"));
         pnlContenedorProductores.add(pnlProductores.get(pnlProductores.size() - 1));
-        
+
         pnlContenedorProductores.repaint();
         pnlContenedorProductores.revalidate();
-        
+
         buffer.aumentarNumProductores();
     }//GEN-LAST:event_btnAñadirProductorActionPerformed
 

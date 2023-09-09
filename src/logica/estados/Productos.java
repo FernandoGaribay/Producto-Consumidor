@@ -4,5 +4,6 @@ public enum Productos {
     SUSHI,
     CHEETOS,
     FIDEOS,
-    GALLETA
+    GALLETA,
+    PIZZA
 }

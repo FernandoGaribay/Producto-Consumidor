@@ -134,6 +134,9 @@ public class Buffer {
             case SUSHI:
                 nuevoEstado = Estados.CM_SUSHI;
                 break;
+            case PIZZA:
+                nuevoEstado = Estados.CM_PIZZA;
+                break;
         }
 
         return nuevoEstado;
