@@ -12,13 +12,14 @@ public class Buffer {
     private List<Productos> buffer;
     private List<Consumidor> consumidores;
     private List<Productor> productores;
+    private List<BufferListener> listeners;
     private int numConsumidores;
     private int numProductores;
     private int capacidad;
     private boolean estaVacio;
     private boolean estaLLeno;
-    private List<BufferListener> listeners;
 
+    // <editor-fold defaultstate="collapsed" desc="Constructor e Inicializadores">
     public Buffer(int capacidad, int numConsumidores, int numProductores) {
         initVariables(capacidad, numConsumidores, numProductores);
         initConsumidores(numConsumidores);
@@ -29,12 +30,12 @@ public class Buffer {
         this.buffer = new ArrayList<>(capacidad);
         this.consumidores = new ArrayList<>();
         this.productores = new ArrayList<>();
+        this.listeners = new ArrayList<>();
         this.numConsumidores = numConsumidores;
         this.numProductores = numProductores;
         this.capacidad = capacidad;
         this.estaLLeno = false;
         this.estaVacio = true;
-        this.listeners = new ArrayList<>();
     }
 
     private void initConsumidores(int numConsumidores) {
@@ -48,7 +49,6 @@ public class Buffer {
     }
 
     private void initProductores(int numProductores) {
-        System.out.println("NUMERO DE PRODUCTORES : " + numProductores);
         for (int i = 0; i < numProductores; i++) {
             productores.add(new Productor(i, this));
         }
@@ -58,6 +58,18 @@ public class Buffer {
         }
     }
 
+    public void iniciar() {
+        for (int i = 0; i < numConsumidores; i++) {
+            consumidores.get(i).start();
+        }
+
+        for (int i = 0; i < numProductores; i++) {
+            productores.get(i).start();
+        }
+    }
+    // </editor-fold>
+
+    // <editor-fold defaultstate="collapsed" desc="Metodos BufferListener">
     public synchronized void addBufferListener(BufferListener listener) {
         listeners.add(listener);
     }
@@ -67,7 +79,9 @@ public class Buffer {
             listener.bufferActualizado(buffer, consumidores, productores);
         }
     }
+    // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="Metodos Consumir/Producir y Estados">
     public synchronized Estados consumir(Estados estado) {
         while (estaVacio) {
             try {
@@ -78,7 +92,7 @@ public class Buffer {
         }
 
         Productos p = buffer.remove(0);
-        estado = actualizarEstado(p, estado);
+        estado = dormirConsumidor(p, estado);
 
         estaLLeno = false;
         if (buffer.isEmpty()) {
@@ -118,7 +132,7 @@ public class Buffer {
         }
     }
 
-    private Estados actualizarEstado(Productos p, Estados estado) {
+    public synchronized Estados dormirConsumidor(Productos p, Estados estado) {
         Estados nuevoEstado = estado;
 
         switch (p) {
@@ -141,23 +155,15 @@ public class Buffer {
 
         return nuevoEstado;
     }
+    // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="Metodos Aumentar/Disminuir e Imprecion">
     public synchronized void imprimirBuffer() {
 //        System.out.print("[ ");
         for (Productos c : buffer) {
             System.out.print(c + " ");
         }
         System.out.println("");
-    }
-
-    public void iniciar() {
-        for (int i = 0; i < numConsumidores; i++) {
-            consumidores.get(i).start();
-        }
-
-        for (int i = 0; i < numProductores; i++) {
-            productores.get(i).start();
-        }
     }
 
     public void aumentarNumConsumidores() {
@@ -187,7 +193,9 @@ public class Buffer {
 
         this.numProductores++;
     }
+    // </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="Getters and Setters">
     public List<Consumidor> getConsumidores() {
         return consumidores;
     }
@@ -199,4 +207,6 @@ public class Buffer {
     public int getNumProductores() {
         return productores.size();
     }
+    // </editor-fold>
+
 }

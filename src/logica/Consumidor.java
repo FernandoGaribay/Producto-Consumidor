@@ -1,6 +1,5 @@
 package logica;
 
-import logica.Buffer;
 import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,7 +47,6 @@ public class Consumidor extends Thread {
             case CM_PIZZA:
                 return Productos.PIZZA;
             default:
-                // En caso de un estado no reconocido, puedes devolver un valor por defecto o manejarlo de acuerdo a tus necesidades.
                 return null;
         }
     }
