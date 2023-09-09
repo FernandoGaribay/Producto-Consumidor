@@ -82,9 +82,10 @@ public class Buffer {
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="Metodos Consumir/Producir y Estados">
-    public synchronized Estados consumir(Estados estado) {
+    public synchronized Productos consumir() {
         while (estaVacio) {
             try {
+                System.out.println("CONSUMIDOR DORMIDOOOOOO");
                 wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
@@ -92,7 +93,7 @@ public class Buffer {
         }
 
         Productos p = buffer.remove(0);
-        estado = dormirConsumidor(p, estado);
+//        estado = dormirConsumidor(p, estado);
 
         estaLLeno = false;
         if (buffer.isEmpty()) {
@@ -101,7 +102,7 @@ public class Buffer {
 
         notifyAll();
         notificarCambios();
-        return estado;
+        return p;
     }
 
     public synchronized void producir(Productos producto, Estados estado) {
@@ -131,28 +132,31 @@ public class Buffer {
         }
     }
 
-    public synchronized Estados dormirConsumidor(Productos p, Estados estado) {
-        Estados nuevoEstado = estado;
-
-        switch (p) {
-            case CHEETOS:
-                nuevoEstado = Estados.CM_CHEETOS;
-                break;
-            case FIDEOS:
-                nuevoEstado = Estados.CM_FIDEOS;
-                break;
-            case GALLETA:
-                nuevoEstado = Estados.CM_GALLETA;
-                break;
-            case SUSHI:
-                nuevoEstado = Estados.CM_SUSHI;
-                break;
-            case PIZZA:
-                nuevoEstado = Estados.CM_PIZZA;
-                break;
+    public synchronized Estados dormirConsumidor() {
+        if (estaVacio) {
+            return Estados.DURMIENDO;
+        } else {
+            Productos p = consumir();
+            Estados nuevoEstado = null;
+            switch (p) {
+                case CHEETOS:
+                    nuevoEstado = Estados.CM_CHEETOS;
+                    break;
+                case FIDEOS:
+                    nuevoEstado = Estados.CM_FIDEOS;
+                    break;
+                case GALLETA:
+                    nuevoEstado = Estados.CM_GALLETA;
+                    break;
+                case SUSHI:
+                    nuevoEstado = Estados.CM_SUSHI;
+                    break;
+                case PIZZA:
+                    nuevoEstado = Estados.CM_PIZZA;
+                    break;
+            }
+            return nuevoEstado;
         }
-
-        return nuevoEstado;
     }
     // </editor-fold>
 
@@ -164,8 +168,8 @@ public class Buffer {
         }
         System.out.println("");
     }
-    
-    public void establecerCapacidadBuffer(int capacidad){
+
+    public void establecerCapacidadBuffer(int capacidad) {
         this.capacidad = capacidad;
     }
 

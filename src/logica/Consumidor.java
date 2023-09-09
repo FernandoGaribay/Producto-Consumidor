@@ -21,7 +21,7 @@ public class Consumidor extends Thread {
     @Override
     public void run() {
         while (true) {
-            estado = buffer.consumir(estado); // Captura el nuevo estado
+            estado = buffer.dormirConsumidor();
             Productos producto = obtenerProductoSegunEstado();
 
             System.out.println(" - Consumido el producto: " + producto + " del buffer. ID: " + cid + " ESTADO: " + estado);
@@ -47,6 +47,7 @@ public class Consumidor extends Thread {
                 return Productos.SUSHI;
             case CM_PIZZA:
                 return Productos.PIZZA;
+             
             default:
                 return null;
         }
