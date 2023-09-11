@@ -11,6 +11,8 @@ public class Consumidor extends Thread {
     private int cid;
     private Estados estado;
     private Buffer buffer;
+    private static int tiempoMax = 5;
+    private static int tiempoMin = 3;
 
     public Consumidor(int cid, Buffer buffer) {
         this.cid = cid;
@@ -28,7 +30,7 @@ public class Consumidor extends Thread {
             buffer.notificarCambios();
 //            buffer.imprimirBuffer();
             try {
-                sleep(random(5, 3) * 1000);
+                sleep(random(tiempoMax, tiempoMin) * 1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Productor.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -47,7 +49,7 @@ public class Consumidor extends Thread {
                 return Productos.SUSHI;
             case CM_PIZZA:
                 return Productos.PIZZA;
-             
+
             default:
                 return null;
         }
@@ -69,7 +71,24 @@ public class Consumidor extends Thread {
         this.estado = estado;
     }
 
+    public static int getTiempoMax() {
+        return tiempoMax;
+    }
+
+    public static void setTiempoMax(int aTiempoMax) {
+        tiempoMax = aTiempoMax;
+    }
+
+    public static int getTiempoMin() {
+        return tiempoMin;
+    }
+
+    public static void setTiempoMin(int aTiempoMin) {
+        tiempoMin = aTiempoMin;
+    }
+
     private int random(int max, int min) {
         return (int) (Math.random() * (max - min) + min);
     }
+
 }

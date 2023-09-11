@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/fernando/Documentos/Java/Producto-Consumidor/src/logica/Productor.java</file>
-            <file>file:/home/fernando/Documentos/Java/Producto-Consumidor/src/logica/Consumidor.java</file>
-            <file>file:/home/fernando/Documentos/Java/Producto-Consumidor/src/main/UIProductoConsumidor.java</file>
+            <file>file:/C:/Users/garib/OneDrive/Escritorio/Producto-Consumidor/src/main/UIProductoConsumidor.java</file>
+            <file>file:/C:/Users/garib/OneDrive/Escritorio/Producto-Consumidor/src/logica/Buffer.java</file>
+            <file>file:/C:/Users/garib/OneDrive/Escritorio/Producto-Consumidor/src/logica/Consumidor.java</file>
+            <file>file:/C:/Users/garib/OneDrive/Escritorio/Producto-Consumidor/src/logica/Productor.java</file>
         </group>
     </open-files>
 </project-private>

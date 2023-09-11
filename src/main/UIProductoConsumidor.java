@@ -144,6 +144,15 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         btnEliminarProductor = new javax.swing.JButton();
         sliderCapacidadBuffer = new javax.swing.JSlider();
         lblCapacidadBuffer = new javax.swing.JLabel();
+        lblMaxMinConsumidor = new javax.swing.JLabel();
+        textMinConsumidor = new javax.swing.JTextField();
+        textMaxConsumidor = new javax.swing.JTextField();
+        separador = new javax.swing.JSeparator();
+        textMaxProductor = new javax.swing.JTextField();
+        textMinProductor = new javax.swing.JTextField();
+        lblMaxMinProductor = new javax.swing.JLabel();
+        btnTiempoProductor = new javax.swing.JButton();
+        btnTiempoConsumidor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -253,6 +262,45 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         lblCapacidadBuffer.setText("Capacidad Máxima del Buffer");
         pnlConfiguracion.add(lblCapacidadBuffer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 280, -1));
 
+        lblMaxMinConsumidor.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        lblMaxMinConsumidor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMaxMinConsumidor.setText("Tiempo Max / Min");
+        pnlConfiguracion.add(lblMaxMinConsumidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 140, 20));
+
+        textMinConsumidor.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        textMinConsumidor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textMinConsumidor.setText("3");
+        pnlConfiguracion.add(textMinConsumidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 200, 65, -1));
+
+        textMaxConsumidor.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        textMaxConsumidor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textMaxConsumidor.setText("5");
+        pnlConfiguracion.add(textMaxConsumidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 65, -1));
+
+        separador.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        pnlConfiguracion.add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 80, 10, 180));
+
+        textMaxProductor.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        textMaxProductor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textMaxProductor.setText("5");
+        pnlConfiguracion.add(textMaxProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 65, -1));
+
+        textMinProductor.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        textMinProductor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textMinProductor.setText("3");
+        pnlConfiguracion.add(textMinProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 200, 65, -1));
+
+        lblMaxMinProductor.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        lblMaxMinProductor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMaxMinProductor.setText("Tiempo Max / Min");
+        pnlConfiguracion.add(lblMaxMinProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 140, 20));
+
+        btnTiempoProductor.setText("Aplicar cambios");
+        pnlConfiguracion.add(btnTiempoProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 233, 140, 20));
+
+        btnTiempoConsumidor.setText("Aplicar cambios");
+        pnlConfiguracion.add(btnTiempoConsumidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 233, 140, 20));
+
         background.add(pnlConfiguracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 320, 330));
 
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 520));
@@ -356,7 +404,11 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
     private javax.swing.JButton btnEliminarConsumidor;
     private javax.swing.JButton btnEliminarProductor;
     private javax.swing.JButton btnIniciar;
+    private javax.swing.JButton btnTiempoConsumidor;
+    private javax.swing.JButton btnTiempoProductor;
     private javax.swing.JLabel lblCapacidadBuffer;
+    private javax.swing.JLabel lblMaxMinConsumidor;
+    private javax.swing.JLabel lblMaxMinProductor;
     private javax.swing.JPanel pnlConfiguracion;
     private javax.swing.JPanel pnlContenedorConsumidores;
     private javax.swing.JPanel pnlContenedorProductores;
@@ -364,6 +416,11 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
     private javax.swing.JScrollPane scrollContenedorConsumidores;
     private javax.swing.JScrollPane scrollContenedorProductores;
     private javax.swing.JScrollPane scrollContenedorProductos;
+    private javax.swing.JSeparator separador;
     private javax.swing.JSlider sliderCapacidadBuffer;
+    private javax.swing.JTextField textMaxConsumidor;
+    private javax.swing.JTextField textMaxProductor;
+    private javax.swing.JTextField textMinConsumidor;
+    private javax.swing.JTextField textMinProductor;
     // End of variables declaration//GEN-END:variables
 }
