@@ -260,7 +260,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
 
         lblCapacidadBuffer.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         lblCapacidadBuffer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCapacidadBuffer.setText("Capacidad Máxima del Buffer");
+        lblCapacidadBuffer.setText("Capacidad Máxima del Buffer: 5");
         pnlConfiguracion.add(lblCapacidadBuffer, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 280, -1));
 
         lblMaxMinConsumidor.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -410,7 +410,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
 
     private void sliderCapacidadBufferStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderCapacidadBufferStateChanged
         buffer.establecerCapacidadBuffer(sliderCapacidadBuffer.getValue());
-
+        lblCapacidadBuffer.setText("Capacidad Máxima del Buffer: " + sliderCapacidadBuffer.getValue());
         System.out.println("$ CAPACIDAD MAXIMA DEL BUFFER EN: " + sliderCapacidadBuffer.getValue());
     }//GEN-LAST:event_sliderCapacidadBufferStateChanged
 

@@ -85,7 +85,7 @@ public class Buffer {
     public synchronized Productos consumir() {
         while (estaVacio) {
             try {
-                System.out.println("CONSUMIDOR DORMIDOOOOOO");
+//                System.out.println("CONSUMIDOR DORMIDOOOOOO");
                 wait();
             } catch (InterruptedException ex) {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
@@ -93,7 +93,6 @@ public class Buffer {
         }
 
         Productos p = buffer.remove(0);
-//        estado = dormirConsumidor(p, estado);
 
         estaLLeno = false;
         if (buffer.isEmpty()) {
@@ -113,8 +112,6 @@ public class Buffer {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
-        System.out.println("CAPACIDAAAAAAAAAAD: " + capacidad);
         
         if (buffer.size() >= capacidad) {
             estaLLeno = true;
