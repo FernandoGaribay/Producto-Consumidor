@@ -214,6 +214,14 @@ public class Buffer {
     public int getNumProductores() {
         return productores.size();
     }
+
+    public void setTiempoMaxConsumidor(int tiempo) {
+        Consumidor.setTiempoMax(tiempo);
+    }
+
+    public void setTiempoMinConsumidor(int tiempo) {
+        Consumidor.setTiempoMin(tiempo);
+    }
     // </editor-fold>
 
 }

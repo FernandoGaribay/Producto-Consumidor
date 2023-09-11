@@ -10,6 +10,7 @@ import paneles.panelProducto;
 import paneles.panelEntidad;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class UIProductoConsumidor extends javax.swing.JFrame implements BufferListener {
 
@@ -270,11 +271,13 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         textMinConsumidor.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         textMinConsumidor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textMinConsumidor.setText("3");
+        textMinConsumidor.setEnabled(false);
         pnlConfiguracion.add(textMinConsumidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 200, 65, -1));
 
         textMaxConsumidor.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         textMaxConsumidor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textMaxConsumidor.setText("5");
+        textMaxConsumidor.setEnabled(false);
         pnlConfiguracion.add(textMaxConsumidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 65, -1));
 
         separador.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -283,11 +286,13 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         textMaxProductor.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         textMaxProductor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textMaxProductor.setText("5");
+        textMaxProductor.setEnabled(false);
         pnlConfiguracion.add(textMaxProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 65, -1));
 
         textMinProductor.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         textMinProductor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textMinProductor.setText("3");
+        textMinProductor.setEnabled(false);
         pnlConfiguracion.add(textMinProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 200, 65, -1));
 
         lblMaxMinProductor.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -296,9 +301,16 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         pnlConfiguracion.add(lblMaxMinProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 140, 20));
 
         btnTiempoProductor.setText("Aplicar cambios");
+        btnTiempoProductor.setEnabled(false);
         pnlConfiguracion.add(btnTiempoProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 233, 140, 20));
 
         btnTiempoConsumidor.setText("Aplicar cambios");
+        btnTiempoConsumidor.setEnabled(false);
+        btnTiempoConsumidor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTiempoConsumidorActionPerformed(evt);
+            }
+        });
         pnlConfiguracion.add(btnTiempoConsumidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 233, 140, 20));
 
         background.add(pnlConfiguracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 320, 330));
@@ -319,6 +331,12 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         btnEliminarConsumidor.setEnabled(true);
         btnEliminarProductor.setEnabled(true);
         sliderCapacidadBuffer.setEnabled(true);
+        textMaxConsumidor.setEnabled(true);
+        textMaxProductor.setEnabled(true);
+        textMinConsumidor.setEnabled(true);
+        textMinProductor.setEnabled(true);
+        btnTiempoConsumidor.setEnabled(true);
+        btnTiempoProductor.setEnabled(true);
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     private void btnAñadirConsumidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirConsumidorActionPerformed
@@ -370,6 +388,15 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
 
         System.out.println("$ CAPACIDAD MAXIMA DEL BUFFER EN: " + sliderCapacidadBuffer.getValue());
     }//GEN-LAST:event_sliderCapacidadBufferStateChanged
+
+    private void btnTiempoConsumidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiempoConsumidorActionPerformed
+        if(!(textMaxConsumidor.getText().isBlank() || textMinConsumidor.getText().isBlank())){
+            buffer.setTiempoMaxConsumidor(Integer.parseInt(textMaxConsumidor.getText()));
+            buffer.setTiempoMinConsumidor(Integer.parseInt(textMinConsumidor.getText()));
+        } else {
+            JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios.");
+        }
+    }//GEN-LAST:event_btnTiempoConsumidorActionPerformed
     // </editor-fold>
 
     public static void main(String args[]) {
