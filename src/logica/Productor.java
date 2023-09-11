@@ -14,6 +14,8 @@ public class Productor extends Thread {
     private Estados estado;
     private Buffer buffer;
     private List<Productos> productos;
+    private static int tiempoMax = 5;
+    private static int tiempoMin = 3;
 
     public Productor(int pid, Buffer buffer) {
         this.pid = pid;
@@ -33,7 +35,7 @@ public class Productor extends Thread {
             buffer.notificarCambios();
 //            buffer.imprimirBuffer();
             try {
-                sleep(random(5, 3) * 1000);
+                sleep(random(tiempoMax, tiempoMin) * 1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(Productor.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -58,5 +60,21 @@ public class Productor extends Thread {
 
     private int random(int max, int min) {
         return (int) (Math.random() * (max - min) + min);
+    }
+    
+    public static int getTiempoMax() {
+        return tiempoMax;
+    }
+
+    public static void setTiempoMax(int aTiempoMax) {
+        tiempoMax = aTiempoMax;
+    }
+
+    public static int getTiempoMin() {
+        return tiempoMin;
+    }
+
+    public static void setTiempoMin(int aTiempoMin) {
+        tiempoMin = aTiempoMin;
     }
 }

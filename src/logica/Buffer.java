@@ -222,6 +222,14 @@ public class Buffer {
     public void setTiempoMinConsumidor(int tiempo) {
         Consumidor.setTiempoMin(tiempo);
     }
+
+    public void setTiempoMaxProductor(int tiempo) {
+        Productor.setTiempoMax(tiempo);
+    }
+
+    public void setTiempoMinProductor(int tiempo) {
+        Productor.setTiempoMin(tiempo);
+    }
     // </editor-fold>
 
 }

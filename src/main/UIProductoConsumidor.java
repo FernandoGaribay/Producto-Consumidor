@@ -302,6 +302,11 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
 
         btnTiempoProductor.setText("Aplicar cambios");
         btnTiempoProductor.setEnabled(false);
+        btnTiempoProductor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTiempoProductorActionPerformed(evt);
+            }
+        });
         pnlConfiguracion.add(btnTiempoProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 233, 140, 20));
 
         btnTiempoConsumidor.setText("Aplicar cambios");
@@ -325,7 +330,7 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         buffer.iniciar();
         btnIniciar.setEnabled(false);
-        
+
         btnAñadirConsumidor.setEnabled(true);
         btnAñadirProductor.setEnabled(true);
         btnEliminarConsumidor.setEnabled(true);
@@ -390,13 +395,24 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
     }//GEN-LAST:event_sliderCapacidadBufferStateChanged
 
     private void btnTiempoConsumidorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiempoConsumidorActionPerformed
-        if(!(textMaxConsumidor.getText().isBlank() || textMinConsumidor.getText().isBlank())){
+        if (!(textMaxConsumidor.getText().isBlank() || textMinConsumidor.getText().isBlank())) {
+            System.out.println(" --- TIEMPOS CONSUMIDOR ACTUALIZADOS; MAX:" + textMaxConsumidor.getText() + " MIN" + textMinConsumidor.getText());
             buffer.setTiempoMaxConsumidor(Integer.parseInt(textMaxConsumidor.getText()));
             buffer.setTiempoMinConsumidor(Integer.parseInt(textMinConsumidor.getText()));
         } else {
             JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios.");
         }
     }//GEN-LAST:event_btnTiempoConsumidorActionPerformed
+
+    private void btnTiempoProductorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTiempoProductorActionPerformed
+        if (!(textMaxProductor.getText().isBlank() || textMinProductor.getText().isBlank())) {
+            System.out.println(" --- TIEMPOS PRODUCTOR ACTUALIZADOS; MAX:" + textMaxProductor.getText() + " MIN" + textMinProductor.getText());
+            buffer.setTiempoMaxProductor(Integer.parseInt(textMaxProductor.getText()));
+            buffer.setTiempoMinProductor(Integer.parseInt(textMinProductor.getText()));
+        } else {
+            JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios.");
+        }
+    }//GEN-LAST:event_btnTiempoProductorActionPerformed
     // </editor-fold>
 
     public static void main(String args[]) {
