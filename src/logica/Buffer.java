@@ -113,11 +113,14 @@ public class Buffer {
                 Logger.getLogger(Buffer.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        buffer.add(producto);
 
-        estaVacio = false;
-        if (buffer.size() == capacidad) {
+        System.out.println("CAPACIDAAAAAAAAAAD: " + capacidad);
+        
+        if (buffer.size() >= capacidad) {
             estaLLeno = true;
+        } else{
+            buffer.add(producto);
+            estaVacio = false; 
         }
 
         notifyAll();
