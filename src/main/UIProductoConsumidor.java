@@ -272,12 +272,22 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         textMinConsumidor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textMinConsumidor.setText("3");
         textMinConsumidor.setEnabled(false);
+        textMinConsumidor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textMinConsumidorKeyTyped(evt);
+            }
+        });
         pnlConfiguracion.add(textMinConsumidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 200, 65, -1));
 
         textMaxConsumidor.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         textMaxConsumidor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textMaxConsumidor.setText("5");
         textMaxConsumidor.setEnabled(false);
+        textMaxConsumidor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textMaxConsumidorKeyTyped(evt);
+            }
+        });
         pnlConfiguracion.add(textMaxConsumidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 65, -1));
 
         separador.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -287,12 +297,22 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
         textMaxProductor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textMaxProductor.setText("5");
         textMaxProductor.setEnabled(false);
+        textMaxProductor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textMaxProductorKeyTyped(evt);
+            }
+        });
         pnlConfiguracion.add(textMaxProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 65, -1));
 
         textMinProductor.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         textMinProductor.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textMinProductor.setText("3");
         textMinProductor.setEnabled(false);
+        textMinProductor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textMinProductorKeyTyped(evt);
+            }
+        });
         pnlConfiguracion.add(textMinProductor, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 200, 65, -1));
 
         lblMaxMinProductor.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
@@ -413,6 +433,30 @@ public class UIProductoConsumidor extends javax.swing.JFrame implements BufferLi
             JOptionPane.showMessageDialog(this, "Los campos no pueden estar vacios.");
         }
     }//GEN-LAST:event_btnTiempoProductorActionPerformed
+
+    private void textMaxConsumidorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMaxConsumidorKeyTyped
+        if (!(evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_textMaxConsumidorKeyTyped
+
+    private void textMinConsumidorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMinConsumidorKeyTyped
+        if (!(evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_textMinConsumidorKeyTyped
+
+    private void textMaxProductorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMaxProductorKeyTyped
+        if (!(evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_textMaxProductorKeyTyped
+
+    private void textMinProductorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textMinProductorKeyTyped
+        if (!(evt.getKeyChar() >= 48 && evt.getKeyChar() <= 57)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_textMinProductorKeyTyped
     // </editor-fold>
 
     public static void main(String args[]) {
